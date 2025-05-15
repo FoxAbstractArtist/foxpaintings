@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Sample Painting",
+    "description": "This is a sample description of the painting.",
+    "medium": "Oil on Canvas",
+    "size": "24 x 36 inches",
+    "image": "/content/images/sample-painting.jpg"
+  }
+]

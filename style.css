@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f8f8f8;
+  color: #333;
+}
+
+header {
+  background: #222;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: #f4f4f4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.painting {
+  background: white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  width: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.painting img {
+  width: 100%;
+  display: block;
+}
+
+.painting .info {
+  padding: 0.75rem;
+}
+
+.painting .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.painting .description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.painting .medium, .painting .size {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+}

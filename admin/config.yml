@@ -2,16 +2,19 @@ backend:
   name: github
   repo: FoxAbstractArtist/foxpaintings
   branch: main
-  base_url: https://foxpaintings.onrender.com
-  auth_endpoint: api/auth
+  auth_scope: repo
+  base_url: https://api.netlify.com
+  auth_endpoint: oauth2/authorize
+  client_id: Ov23cttx6UWJAOcHffld
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "images/uploads" # path inside repo
+public_folder: "/images/uploads" # path in website
 
 collections:
   - name: "paintings"
     label: "Paintings"
-    folder: "paintings"
+    label_singular: "Painting"
+    folder: "content/paintings"
     create: true
     slug: "{{slug}}"
     fields:

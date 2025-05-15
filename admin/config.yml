@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: FoxAbstractArtist/foxpaintings
+  branch: main
+  base_url: https://foxpaintings.onrender.com
+  auth_endpoint: api/auth
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "paintings"
+    label: "Paintings"
+    folder: "paintings"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }

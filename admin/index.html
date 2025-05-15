@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <title>Netlify CMS Admin</title>
+  <!-- Netlify CMS core script -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <!-- Netlify Identity Widget script -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <script>
+    // Initialize the Netlify Identity widget
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.open(); // Opens login modal automatically if no user
+        }
+      });
+      window.netlifyIdentity.init();
+    }
+  </script>
 </body>
 </html>

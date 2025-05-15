@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h2>Admin Login</h2>
+  <form id="loginForm">
+    <input type="text" placeholder="Username" id="username" required /><br />
+    <input type="password" placeholder="Password" id="password" required /><br />
+    <button type="submit">Login</button>
+  </form>
+  <div id="uploadSection" style="display:none;">
+    <h3>Upload Painting</h3>
+    <input type="text" id="title" placeholder="Title"><br>
+    <input type="text" id="medium" placeholder="Medium"><br>
+    <input type="text" id="size" placeholder="Size"><br>
+    <input type="file" id="image"><br>
+    <button onclick="uploadPainting()">Upload</button>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -10,11 +10,10 @@
 </head>
 <body>
   <script>
-    // Initialize the Netlify Identity widget
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
-          window.netlifyIdentity.open(); // Opens login modal automatically if no user
+          window.netlifyIdentity.open(); // Show login modal if not logged in
         }
       });
       window.netlifyIdentity.init();

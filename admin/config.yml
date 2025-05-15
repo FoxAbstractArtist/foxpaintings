@@ -1,11 +1,10 @@
 backend:
   name: github
-  repo: FoxAbstractArtist/foxpaintings # replace with your github username/repo
+  repo: FoxAbstractArtist/foxpaintings
   branch: main
-  auth_scope: repo
 
-media_folder: "content/images/uploads"
-public_folder: "/content/images/uploads"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "paintings"
@@ -14,8 +13,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Medium", name: "medium", widget: "string"}
-      - {label: "Size", name: "size", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "image", label: "Image", widget: "image" }

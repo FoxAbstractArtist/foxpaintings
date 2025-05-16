@@ -82,15 +82,9 @@ title: Fox Paintings Gallery
     margin-bottom: 0.4rem;
   }
 
-  .painting-description {
-    font-size: 0.95rem;
-    color: #444;
-    margin-bottom: 0.4rem;
-  }
-
   .painting-meta {
-    font-size: 0.8rem;
-    color: #777;
+    font-size: 0.9rem;
+    color: #555;
     line-height: 1.4;
   }
 
@@ -149,17 +143,13 @@ title: Fox Paintings Gallery
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
-          <div class="painting-description">{{ painting.templateContent | safe }}</div>
-          {% if painting.data.medium or painting.data.size or painting.data.year %}
+          {% if painting.data.medium or painting.data.size %}
             <div class="painting-meta">
               {% if painting.data.medium %}
                 <div><strong>Medium:</strong> {{ painting.data.medium }}</div>
               {% endif %}
               {% if painting.data.size and painting.data.size != 0 %}
                 <div><strong>Size:</strong> {{ painting.data.size }}</div>
-              {% endif %}
-              {% if painting.data.year %}
-                <div><strong>Year:</strong> {{ painting.data.year }}</div>
               {% endif %}
             </div>
           {% endif %}

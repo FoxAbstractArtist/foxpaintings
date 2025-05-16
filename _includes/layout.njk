@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }} | Fox Paintings</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #fafafa; }
+    header { background: #222; color: white; padding: 10px 20px; }
+    footer { background: #222; color: white; padding: 10px 20px; text-align: center; margin-top: 40px; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 20px; }
+    .painting { border: 1px solid #ddd; padding: 10px; background: white; width: 200px; }
+    .painting img { max-width: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fox Paintings</h1>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    &copy; 2025 Fox Abstract Artist
+  </footer>
+</body>
+</html>

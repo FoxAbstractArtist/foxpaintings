@@ -1,0 +1,24 @@
+{
+  "name": "foxpaintings",
+  "version": "1.0.0",
+  "main": "gallery.js",
+  "scripts": {
+  "start": "eleventy --serve",
+  "build": "eleventy"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoxAbstractArtist/foxpaintings.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FoxAbstractArtist/foxpaintings/issues"
+  },
+  "homepage": "https://github.com/FoxAbstractArtist/foxpaintings#readme",
+  "description": "",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.0"
+  }
+}

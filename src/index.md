@@ -65,7 +65,7 @@ title: Fox Paintings Gallery
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    width: 100%; /* fill grid cell */
+    width: 100%;
   }
 
   .painting-item:hover {
@@ -120,12 +120,10 @@ title: Fox Paintings Gallery
     text-overflow: ellipsis;
   }
 
-  /* Remove extra margin on paragraphs inside description */
   .painting-description p {
     margin: 0;
   }
 
-  /* Responsive tweaks */
   @media (max-width: 600px) {
     .painting-image {
       height: 180px;
@@ -155,7 +153,7 @@ title: Fox Paintings Gallery
             </time>
           {% endif %}
           <div class="painting-description">
-            {{{ painting.content | markdownify | safe }}}
+            {{ painting.templateContent | safe }}
           </div>
         </div>
       </article>

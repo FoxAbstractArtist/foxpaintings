@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title | default("Fox Paintings") }}</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1><a href="/">Fox Paintings</a></h1>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>© 2025 Fox Abstract Artist</p>
+  </footer>
+</body>
+</html>

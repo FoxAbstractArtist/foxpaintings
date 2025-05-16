@@ -9,3 +9,36 @@
   {{ content | safe }}
 </body>
 </html>
+
+<style>
+body {
+  font-family: sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  background: #fafafa;
+}
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.painting-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+}
+.painting-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+</style>

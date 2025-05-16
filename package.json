@@ -2,9 +2,9 @@
   "name": "foxpaintings",
   "version": "1.0.0",
   "main": "gallery.js",
-  "scripts": {
-  "start": "eleventy --serve",
-  "build": "eleventy"
+"scripts": {
+  "build": "eleventy",
+  "dev": "eleventy --serve --watch"
 },
   "repository": {
     "type": "git",

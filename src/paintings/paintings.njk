@@ -1,0 +1,17 @@
+---
+layout: base.njk
+title: Paintings
+---
+
+<h1>{{ title }}</h1>
+<ul>
+  {% for painting in collections.paintings %}
+    <li>
+      <h2>{{ painting.data.title }}</h2>
+      <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" width="300" />
+      <p>{{ painting.data.description }}</p>
+      <p><strong>Medium:</strong> {{ painting.data.medium }}</p>
+      <p><strong>Size:</strong> {{ painting.data.size }}</p>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,17 +1,20 @@
 ---
-layout: base.njk
-title: Paintings
+layout: default
+title: Gallery
+pagination:
+  data: collections.paintings
+  size: 100
+permalink: paintings/index.html
 ---
 
-<h1>{{ title }}</h1>
-<ul>
-  {% for painting in collections.paintings %}
-    <li>
+<h1 class="title">Gallery</h1>
+<div class="gallery">
+  {% for painting in pagination.items %}
+    <div class="painting-card">
+      <img src="{{ painting.data.image | url }}" alt="{{ painting.data.title }}">
       <h2>{{ painting.data.title }}</h2>
-      <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" width="300" />
       <p>{{ painting.data.description }}</p>
-      <p><strong>Medium:</strong> {{ painting.data.medium }}</p>
-      <p><strong>Size:</strong> {{ painting.data.size }}</p>
-    </li>
+    </div>
   {% endfor %}
-</ul>
+</div>
+

@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: FoxAbstractArtist/foxpaintings
   branch: main
   auth_scope: repo

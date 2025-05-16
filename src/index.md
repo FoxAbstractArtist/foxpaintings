@@ -7,13 +7,17 @@ title: Fox Paintings Gallery
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet" />
 
 <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     background: url('https://dashing-empanada-2c3316.netlify.app/assets/1000143373_dimmed.png') no-repeat center center fixed;
     background-size: cover;
     color: #333;
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
   }
 
   .gallery-title {

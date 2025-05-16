@@ -107,18 +107,20 @@ title: Fox Paintings Gallery
 <h1 class="gallery-title">Fox Paintings Gallery</h1>
 <p class="gallery-subtitle">Explore the collection below!</p>
 
-{% if collections.paintings | length > 0 %}
+{% if collections.paintings.size > 0 %}
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
       <article class="painting-item">
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <h2 class="painting-title">{{ painting.data.title }}</h2>
         {% if painting.data.date %}
-          <time class="painting-date" datetime="{{ painting.data.date | date('yyyy-MM-dd') }}">
-            {{ painting.data.date | date('MMMM dd, yyyy') }}
+          <time class="painting-date" datetime="{{ painting.data.date | date: '%Y-%m-%d' }}">
+            {{ painting.data.date | date: '%B %d, %Y' }}
           </time>
         {% endif %}
-        <p class="painting-description">{{ painting.templateContent | markdown | safe }}</p>
+        <p class="painting-description">
+          {{ painting.templateContent | markdownify }}
+        </p>
       </article>
     {% endfor %}
   </div>

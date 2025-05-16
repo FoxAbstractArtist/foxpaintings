@@ -66,6 +66,7 @@ title: Fox Paintings Gallery
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     width: 100%;
+    cursor: pointer;
   }
 
   .painting-item:hover {
@@ -111,6 +112,37 @@ title: Fox Paintings Gallery
     margin: 0;
   }
 
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   @media (max-width: 600px) {
     .painting-image {
       height: 180px;
@@ -123,6 +155,12 @@ title: Fox Paintings Gallery
     .gallery-subtitle {
       font-size: 1rem;
     }
+
+    .close-modal {
+      top: 20px;
+      right: 20px;
+      font-size: 32px;
+    }
   }
 </style>
 
@@ -132,7 +170,7 @@ title: Fox Paintings Gallery
 {% if collections.paintings.size > 0 %}
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
-      <article class="painting-item">
+      <article class="painting-item" onclick="openModal('{{ painting.data.image }}')">
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
@@ -148,3 +186,27 @@ title: Fox Paintings Gallery
     No paintings found yet.
   </p>
 {% endif %}
+
+<!-- Modal structure -->
+<div id="imageModal" class="modal">
+  <span class="close-modal" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+  function openModal(imageSrc) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+
+  // Optional: close modal on ESC
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeModal();
+  });
+</script>

@@ -47,7 +47,7 @@ title: Fox Paintings Gallery
     margin: 0 auto 4rem;
     padding: 0 1rem;
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 

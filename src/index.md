@@ -6,7 +6,7 @@ title: Fox Paintings Gallery
 <h1 class="gallery-title">Fox Paintings Gallery</h1>
 <p class="gallery-subtitle">Explore the collection below!</p>
 
-{% if collections.paintings | length > 0 %}
+{% if collections.paintings.size > 0 %}
 <div class="gallery-grid">
   {% for painting in collections.paintings %}
     <article class="painting-item">

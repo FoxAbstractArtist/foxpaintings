@@ -8,7 +8,9 @@ title: Fox Paintings Gallery
 
 <style>
   body {
-    background: #fffdfa;
+    background: url('/assets/1000143373_dimmed.png') repeat;
+    background-size: contain;
+    background-attachment: fixed;
     color: #333;
     font-family: 'Montserrat', sans-serif;
     margin: 0;

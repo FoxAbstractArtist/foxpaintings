@@ -8,7 +8,7 @@ title: Fox Paintings Gallery
 
 <style>
   body {
-    background: url('/assets/1000143373_dimmed.png') no-repeat center center fixed;
+    background: url('https://dashing-empanada-2c3316.netlify.app/assets/1000143373_dimmed.png') no-repeat center center fixed;
     background-size: cover;
     color: #333;
     font-family: 'Montserrat', sans-serif;

@@ -1,3 +1,4 @@
+const markdownIt = require("markdown-it");
 const md = new markdownIt();
 
 module.exports = function(eleventyConfig) {

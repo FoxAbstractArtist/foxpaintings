@@ -1,8 +1,6 @@
 backend:
   name: git-gateway
-  repo: FoxAbstractArtist/foxpaintings
   branch: main
-  auth_scope: repo
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"

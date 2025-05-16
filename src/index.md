@@ -21,7 +21,7 @@ title: Fox Paintings Gallery
     font-size: 3rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center;
+    text-align: center !important;
     margin: 1.5rem 0 0.25rem 0;
     color: #2c3e50;
   }
@@ -30,7 +30,7 @@ title: Fox Paintings Gallery
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 1.25rem;
-    text-align: center;
+    text-align: center !important;
     color: #7f8c8d;
     margin-bottom: 2.5rem;
   }
@@ -42,6 +42,7 @@ title: Fox Paintings Gallery
     display: grid;
     gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: start; /* ensure vertical alignment */
   }
 
   .painting-item {
@@ -52,6 +53,7 @@ title: Fox Paintings Gallery
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
   }
 
   .painting-item:hover {
@@ -60,46 +62,63 @@ title: Fox Paintings Gallery
   }
 
   .painting-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 1px solid #ecf0f1;
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: contain !important;
+    background-color: #f9f7f4 !important;
+    border-bottom: 1px solid #ecf0f1 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .painting-footer {
+    padding: 0.75rem 1rem 1rem 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .painting-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.75rem;
     color: #34495e;
-    margin: 1rem 1rem 0.25rem 1rem;
+    margin: 0 0 0.3rem 0;
+    text-align: center !important;
   }
 
   .painting-date {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     color: #95a5a6;
-    margin: 0 1rem 1rem 1rem;
     font-style: italic;
+    margin: 0 0 0.5rem 0;
+    text-align: center !important;
   }
 
   .painting-description {
     font-family: 'Playfair Display', serif;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.4;
     color: #4d5656;
-    margin: 0 1rem 1.5rem 1rem;
-    flex-grow: 1;
+    margin: 0;
+    overflow: hidden;
+    max-height: 3.6em; /* about 2 lines */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   /* Responsive tweaks */
   @media (max-width: 600px) {
     .painting-image {
-      height: 180px;
+      height: 180px !important;
     }
     .gallery-title {
-      font-size: 2.2rem;
+      font-size: 2.2rem !important;
     }
     .gallery-subtitle {
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
   }
 </style>
@@ -112,15 +131,15 @@ title: Fox Paintings Gallery
     {% for painting in collections.paintings %}
       <article class="painting-item">
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
-        <h2 class="painting-title">{{ painting.data.title }}</h2>
-        {% if painting.data.date %}
-          <time class="painting-date" datetime="{{ painting.data.date | date: '%Y-%m-%d' }}">
-            {{ painting.data.date | date: '%B %d, %Y' }}
-          </time>
-        {% endif %}
-        <p class="painting-description">
-          {{ painting.templateContent | markdownify }}
-        </p>
+        <div class="painting-footer">
+          <h2 class="painting-title">{{ painting.data.title }}</h2>
+          {% if painting.data.date %}
+            <time class="painting-date" datetime="{{ painting.data.date | date: '%Y-%m-%d' }}">
+              {{ painting.data.date | date: '%B %d, %Y' }}
+            </time>
+          {% endif %}
+          <p class="painting-description">{{ painting.content | markdownify }}</p>
+        </div>
       </article>
     {% endfor %}
   </div>

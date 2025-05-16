@@ -98,26 +98,13 @@ title: Fox Paintings Gallery
     text-align: center;
   }
 
-  .painting-date {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: #95a5a6;
-    font-style: italic;
-    margin: 0 0 0.5rem 0;
-    text-align: center;
-  }
-
   .painting-description {
     font-family: 'Playfair Display', serif;
     font-size: 1rem;
     line-height: 1.4;
     color: #4d5656;
     margin: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
+    text-align: center;
   }
 
   .painting-description p {
@@ -128,9 +115,11 @@ title: Fox Paintings Gallery
     .painting-image {
       height: 180px;
     }
+
     .gallery-title {
       font-size: 2.2rem;
     }
+
     .gallery-subtitle {
       font-size: 1rem;
     }
@@ -147,11 +136,6 @@ title: Fox Paintings Gallery
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
-          {% if painting.data.date %}
-            <time class="painting-date" datetime="{{ painting.data.date | date: '%Y-%m-%d' }}">
-              {{ painting.data.date | date: '%B %d, %Y' }}
-            </time>
-          {% endif %}
           <div class="painting-description">
             {{ painting.templateContent | safe }}
           </div>

@@ -47,7 +47,7 @@ title: Fox Paintings Gallery
     margin: 0 auto 4rem;
     padding: 0 1rem;
     display: grid;
-    gap: 0.5rem;
+    gap: 0.75rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
@@ -60,65 +60,68 @@ title: Fox Paintings Gallery
   @media (max-width: 600px) {
     .gallery-grid {
       grid-template-columns: 1fr;
+      padding: 0 0.5rem;
     }
   }
 
   .painting-item {
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     height: 100%;
-    width: 100%;
     cursor: pointer;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   .painting-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 30px rgba(44, 62, 80, 0.2);
+    transform: scale(1.025);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
   .painting-image {
     width: 100%;
     height: 280px;
     object-fit: contain;
-    background-color: #f9f7f4;
-    border-bottom: 1px solid #ecf0f1;
-    flex-shrink: 0;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e0e0e0;
   }
 
   .painting-footer {
-    padding: 0.75rem 1rem 1rem;
+    padding: 1rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: center;
   }
 
   .painting-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
-    color: #34495e;
-    margin: 0 0 0.3rem 0;
-    text-align: center;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin: 0 0 0.25rem;
   }
 
   .painting-description {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    color: #444;
     line-height: 1.4;
-    color: #4d5656;
-    margin: 0;
-    text-align: center;
   }
 
-  .painting-description p {
-    margin: 0;
+  .painting-meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.5rem;
   }
 
   /* Modal styles */
@@ -132,7 +135,7 @@ title: Fox Paintings Gallery
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(10, 10, 10, 0.85);
   }
 
   #imageModal img {
@@ -185,13 +188,20 @@ title: Fox Paintings Gallery
 {% if collections.paintings.size > 0 %}
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
-      <article class="painting-item">
-        <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" onclick="openModal(this)" />
+      <article class="painting-item" role="button" tabindex="0" onclick="openModal(this.querySelector('img'))">
+        <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
           <div class="painting-description">
             {{ painting.templateContent | safe }}
           </div>
+          {% if painting.data.medium or painting.data.size or painting.data.year %}
+            <div class="painting-meta">
+              {% if painting.data.medium %} <span><strong>Medium:</strong> {{ painting.data.medium }}</span><br> {% endif %}
+              {% if painting.data.size %} <span><strong>Size:</strong> {{ painting.data.size }}</span><br> {% endif %}
+              {% if painting.data.year %} <span><strong>Year:</strong> {{ painting.data.year }}</span> {% endif %}
+            </div>
+          {% endif %}
         </div>
       </article>
     {% endfor %}
@@ -204,7 +214,7 @@ title: Fox Paintings Gallery
 
 <!-- Modal -->
 <div id="imageModal">
-  <span id="closeModal">&times;</span>
+  <span id="closeModal" aria-label="Close modal">&times;</span>
   <img id="modalImg" src="" alt="Preview" />
 </div>
 

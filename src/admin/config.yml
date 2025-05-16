@@ -13,6 +13,6 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Size", name: "size", widget: "string", required: false }
+      - { label: "Medium", name: "medium", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "body", widget: "markdown" }

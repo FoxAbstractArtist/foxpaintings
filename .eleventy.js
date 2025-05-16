@@ -1,6 +1,9 @@
 module.exports = function (eleventyConfig) {
-  // Pass through the static folder to the output
-  eleventyConfig.addPassthroughCopy("static");
+  // Pass through admin folder to output (_site/admin)
+  eleventyConfig.addPassthroughCopy("admin");
+
+  // Pass through images/uploads folder
+  eleventyConfig.addPassthroughCopy("images/uploads");
 
   // Add a collection for paintings
   eleventyConfig.addCollection("paintings", function (collectionApi) {

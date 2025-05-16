@@ -118,7 +118,7 @@ title: Fox Paintings Gallery
             {{ painting.data.date | date: '%B %d, %Y' }}
           </time>
         {% endif %}
-        <p class="painting-description">{{ painting.data.body | safe }}</p>
+        <p class="painting-description">{{ painting.data.body | markdownify }}</p>
       </article>
     {% endfor %}
   </div>

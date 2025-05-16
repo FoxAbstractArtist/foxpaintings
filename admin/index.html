@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Netlify CMS Admin</title>
+  <title>Admin</title>
 
-  <!-- Netlify Identity Widget -->
+  <!-- Netlify Identity Widget (for login) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- CMS will mount here -->
+  <div id="nc-root"></div>
 
-  <!-- Netlify CMS -->
+  <!-- Load Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 
+  <!-- Optional: Auto-open login modal if not logged in -->
   <script>
-    // Open login modal if not logged in
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
+      window.netlifyIdentity.on("init", (user) => {
         if (!user) {
           window.netlifyIdentity.open();
         }
       });
     }
   </script>
-</head>
-<body>
-  <!-- 👇 THIS IS WHAT YOU WERE MISSING -->
-  <div id="nc-root"></div>
 </body>
 </html>

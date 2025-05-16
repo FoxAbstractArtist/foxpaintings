@@ -112,35 +112,36 @@ title: Fox Paintings Gallery
     margin: 0;
   }
 
-  /* Modal styles */
-  .modal {
-    display: none;
+  /* Modal styles (centered) */
+  #imageModal {
     position: fixed;
-    z-index: 999;
-    padding-top: 60px;
-    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
-  .modal-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 80%;
+  #imageModal img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
   }
 
-  .close-modal {
+  #closeModal {
     position: absolute;
-    top: 30px;
-    right: 40px;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
     color: #fff;
-    font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
+    z-index: 10000;
   }
 
   @media (max-width: 600px) {
@@ -156,10 +157,15 @@ title: Fox Paintings Gallery
       font-size: 1rem;
     }
 
-    .close-modal {
-      top: 20px;
-      right: 20px;
-      font-size: 32px;
+    #imageModal img {
+      max-width: 95vw;
+      max-height: 75vh;
+    }
+
+    #closeModal {
+      font-size: 1.75rem;
+      top: 0.75rem;
+      right: 0.75rem;
     }
   }
 </style>
@@ -170,8 +176,8 @@ title: Fox Paintings Gallery
 {% if collections.paintings.size > 0 %}
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
-      <article class="painting-item" onclick="openModal('{{ painting.data.image }}')">
-        <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
+      <article class="painting-item">
+        <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" onclick="openModal(this)" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
           <div class="painting-description">
@@ -188,25 +194,35 @@ title: Fox Paintings Gallery
 {% endif %}
 
 <!-- Modal structure -->
-<div id="imageModal" class="modal">
-  <span class="close-modal" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="modalImage">
+<div id="imageModal">
+  <span id="closeModal">&times;</span>
+  <img id="modalImg" src="" alt="Preview" />
 </div>
 
 <script>
-  function openModal(imageSrc) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
+  function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
   }
 
   function closeModal() {
     document.getElementById("imageModal").style.display = "none";
   }
 
-  // Optional: close modal on ESC
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeModal();
+  document.getElementById("closeModal").addEventListener("click", closeModal);
+
+  document.getElementById("imageModal").addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
   });
 </script>

@@ -155,7 +155,7 @@ title: Fox Paintings Gallery
             </time>
           {% endif %}
           <div class="painting-description">
-            {{ painting.content | markdownify | safe }}
+            {{{ painting.content | markdownify }}}
           </div>
         </div>
       </article>

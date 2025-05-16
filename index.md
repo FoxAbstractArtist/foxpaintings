@@ -21,7 +21,7 @@ title: Fox Paintings Gallery
     font-size: 3rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center;
+    text-align: center !important;
     margin: 1.5rem 0 0.25rem 0;
     color: #2c3e50;
   }
@@ -30,7 +30,7 @@ title: Fox Paintings Gallery
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 1.25rem;
-    text-align: center;
+    text-align: center !important;
     color: #7f8c8d;
     margin-bottom: 2.5rem;
   }
@@ -61,12 +61,12 @@ title: Fox Paintings Gallery
   }
 
   .painting-image {
-    width: 100%;
-    height: 280px;
-    object-fit: contain;
-    background-color: #f9f7f4;
-    border-bottom: 1px solid #ecf0f1;
-    flex-shrink: 0;
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: contain !important;
+    background-color: #f9f7f4 !important;
+    border-bottom: 1px solid #ecf0f1 !important;
+    flex-shrink: 0 !important;
   }
 
   .painting-footer {
@@ -82,7 +82,7 @@ title: Fox Paintings Gallery
     font-size: 1.75rem;
     color: #34495e;
     margin: 0 0 0.3rem 0;
-    text-align: center;
+    text-align: center !important;
   }
 
   .painting-date {
@@ -91,7 +91,7 @@ title: Fox Paintings Gallery
     color: #95a5a6;
     font-style: italic;
     margin: 0 0 0.5rem 0;
-    text-align: center;
+    text-align: center !important;
   }
 
   .painting-description {
@@ -111,13 +111,13 @@ title: Fox Paintings Gallery
   /* Responsive tweaks */
   @media (max-width: 600px) {
     .painting-image {
-      height: 180px;
+      height: 180px !important;
     }
     .gallery-title {
-      font-size: 2.2rem;
+      font-size: 2.2rem !important;
     }
     .gallery-subtitle {
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
   }
 </style>

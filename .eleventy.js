@@ -1,11 +1,11 @@
 module.exports = function (eleventyConfig) {
-  // Pass through admin folder to output (_site/admin)
-  eleventyConfig.addPassthroughCopy("admin");
+  // Pass through the admin folder inside src
+  eleventyConfig.addPassthroughCopy("src/admin");
 
-  // Pass through images/uploads folder
+  // Pass through images/uploads folder (which is at root, outside src)
   eleventyConfig.addPassthroughCopy("images/uploads");
 
-  // Add a collection for paintings
+  // Add paintings collection
   eleventyConfig.addCollection("paintings", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/paintings/*.md");
   });

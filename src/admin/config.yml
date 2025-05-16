@@ -11,7 +11,7 @@ media_library:
 collections:
   - name: "paintings"
     label: "Paintings"
-    folder: "paintings"
+    folder: "src/paintings"
     create: true
     slug: "{{slug}}"
     fields:

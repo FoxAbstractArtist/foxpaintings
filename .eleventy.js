@@ -7,7 +7,7 @@ module.exports = function (eleventyConfig) {
 
   // Add paintings collection
   eleventyConfig.addCollection("paintings", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("paintings/*.md");
+    return collectionApi.getFilteredByGlob("src/paintings/*.md");
   });
 
   return {

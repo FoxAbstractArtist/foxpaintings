@@ -2,20 +2,21 @@ const markdownIt = require("markdown-it");
 const md = new markdownIt();
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/admin");
-  eleventyConfig.addPassthroughCopy("images/uploads");
+  // ✅ Copy static assets properly
+  eleventyConfig.addPassthroughCopy("src/assets"); // Background, icons, etc.
+  eleventyConfig.addPassthroughCopy("src/admin");  // Netlify CMS
+  eleventyConfig.addPassthroughCopy({ "src/images/uploads": "images/uploads" }); // Paintings folder (correct mapping)
 
+  // ✅ Add collection for paintings
   eleventyConfig.addCollection("paintings", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/paintings/*.md");
   });
 
-  // Add markdownify filter for Liquid
+  // ✅ Liquid filters
   eleventyConfig.addLiquidFilter("markdownify", function(value) {
     return md.render(value);
   });
 
-  // Add a no-op "safe" filter to avoid 'undefined filter: safe' error in Liquid
   eleventyConfig.addLiquidFilter("safe", function(value) {
     return value;
   });

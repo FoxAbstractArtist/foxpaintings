@@ -1,8 +1,8 @@
 ---
-title: Fox Paintings Gallery
-layout: layout.njk
+layout: default
+title: Home
 ---
 
-# Welcome to Fox Paintings
+Welcome to Fox Paintings.
 
-Explore the collection below!
+[Visit Gallery](/paintings/)

@@ -16,7 +16,7 @@ title: Fox Paintings Gallery
   body {
     background: url('https://dashing-empanada-2c3316.netlify.app/assets/1000143373_dimmed.png') no-repeat center center fixed;
     background-size: cover;
-    color: #333;
+    color: #eee;
     font-family: 'Montserrat', sans-serif;
   }
 
@@ -26,18 +26,20 @@ title: Fox Paintings Gallery
     font-size: 3rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center !important;
+    text-align: center;
     margin: 1.5rem 0 0.25rem 0;
-    color: #2c3e50;
+    color: #f1f1f1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
   }
 
   .gallery-subtitle {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 1.25rem;
-    text-align: center !important;
-    color: #7f8c8d;
+    text-align: center;
+    color: #e0e0e0;
     margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   }
 
   .gallery-grid {
@@ -62,7 +64,8 @@ title: Fox Paintings Gallery
   }
 
   .painting-item {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
     overflow: hidden;
@@ -72,6 +75,7 @@ title: Fox Paintings Gallery
     height: 100%;
     width: 100%;
     cursor: pointer;
+    backdrop-filter: blur(5px);
   }
 
   .painting-item:hover {
@@ -117,7 +121,7 @@ title: Fox Paintings Gallery
     margin: 0;
   }
 
-  /* Modal styles (centered) */
+  /* Modal styles */
   #imageModal {
     position: fixed;
     display: none;
@@ -193,12 +197,12 @@ title: Fox Paintings Gallery
     {% endfor %}
   </div>
 {% else %}
-  <p style="text-align: center; font-family: 'Montserrat', sans-serif; color: #999; font-style: italic;">
+  <p style="text-align: center; font-family: 'Montserrat', sans-serif; color: #bbb; font-style: italic;">
     No paintings found yet.
   </p>
 {% endif %}
 
-<!-- Modal structure -->
+<!-- Modal -->
 <div id="imageModal">
   <span id="closeModal">&times;</span>
   <img id="modalImg" src="" alt="Preview" />

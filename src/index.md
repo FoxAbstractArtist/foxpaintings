@@ -15,7 +15,7 @@ title: Fox Paintings Gallery
       {% if painting.data.date %}
       <time class="painting-date" datetime="{{ painting.data.date | date: '%Y-%m-%d' }}">{{ painting.data.date | date: '%B %d, %Y' }}</time>
       {% endif %}
-      <p class="painting-description">{{ painting.data.body | safe }}</p>
+      <p class="painting-description">{{ painting.data.body }}</p>
     </article>
   {% endfor %}
 </div>
@@ -23,6 +23,7 @@ title: Fox Paintings Gallery
 <p>No paintings found yet.</p>
 {% endif %}
 
+<style>
 .gallery-title {
   font-family: 'Georgia', serif;
   font-size: 2.8rem;
@@ -91,4 +92,4 @@ title: Fox Paintings Gallery
   color: #333;
   flex-grow: 1;
 }
-
+</style>

@@ -1,9 +1,9 @@
 module.exports = function (eleventyConfig) {
-  // Passthrough copies (keep as you have)
+  // Passthrough copy for admin panel and uploaded images
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("images/uploads");
 
-  // Paintings collection (keep as is)
+  // Paintings collection from markdown files in src/paintings/
   eleventyConfig.addCollection("paintings", function (collectionApi) {
     return collectionApi.getFilteredByGlob("src/paintings/*.md");
   });
@@ -15,8 +15,8 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       layouts: "_layouts",
     },
-    markdownTemplateEngine: "liquid",   // <--- Add this line
-    dataTemplateEngine: "liquid",       // Optional but recommended
-    htmlTemplateEngine: "liquid",       // Optional but recommended
+    markdownTemplateEngine: "liquid",
+    dataTemplateEngine: "liquid",
+    htmlTemplateEngine: "liquid",
   };
 };

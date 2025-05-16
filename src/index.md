@@ -44,6 +44,18 @@ title: Fox Paintings Gallery
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .painting-item {
     background: #fff;
     border-radius: 12px;
@@ -53,7 +65,7 @@ title: Fox Paintings Gallery
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    width: 100%; /* make sure it fills grid cell */
+    width: 100%; /* fill grid cell */
   }
 
   .painting-item:hover {
@@ -105,6 +117,7 @@ title: Fox Paintings Gallery
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 
   /* Remove extra margin on paragraphs inside description */
@@ -142,7 +155,7 @@ title: Fox Paintings Gallery
             </time>
           {% endif %}
           <div class="painting-description">
-            {{ painting.content | markdownify }}
+            {{ painting.content | markdownify | safe }}
           </div>
         </div>
       </article>

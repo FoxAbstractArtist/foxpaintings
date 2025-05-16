@@ -8,7 +8,6 @@ public_folder: "/images/uploads"
 media_library:
   name: filesystem
 
-
 collections:
   - name: "paintings"
     label: "Paintings"

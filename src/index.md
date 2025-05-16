@@ -42,7 +42,6 @@ title: Fox Paintings Gallery
     display: grid;
     gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: start; /* ensure vertical alignment */
   }
 
   .painting-item {
@@ -101,11 +100,12 @@ title: Fox Paintings Gallery
     line-height: 1.4;
     color: #4d5656;
     margin: 0;
+    /* Show max ~1.5 lines, for compact description */
+    max-height: 2.7em;
     overflow: hidden;
-    max-height: 3.6em; /* about 2 lines */
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1.5;
     -webkit-box-orient: vertical;
   }
 

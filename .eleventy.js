@@ -14,6 +14,11 @@ module.exports = function(eleventyConfig) {
     return md.render(value);
   });
 
+  // Add a no-op "safe" filter to avoid 'undefined filter: safe' error in Liquid
+  eleventyConfig.addLiquidFilter("safe", function(value) {
+    return value;
+  });
+
   return {
     dir: {
       input: "src",

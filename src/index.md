@@ -122,6 +122,27 @@ title: Fox Paintings Gallery
     font-size: 2rem;
     color: #fff;
     cursor: pointer;
+    z-index: 10001;
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.4em 0.6em;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+  }
+  #prevBtn { left: 1rem; }
+  #nextBtn { right: 1rem; }
+
+  .nav-arrow:hover {
+    background: rgba(255,255,255,0.4);
   }
 
   @media (max-width: 600px) {
@@ -145,7 +166,7 @@ title: Fox Paintings Gallery
 {% if collections.paintings.size > 0 %}
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
-      <article class="painting-item" onclick="openModal(this.querySelector('img'))">
+      <article class="painting-item">
         <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
@@ -173,25 +194,64 @@ title: Fox Paintings Gallery
 
 <div id="imageModal">
   <span id="closeModal">&times;</span>
+  <button id="prevBtn" class="nav-arrow">&#10094;</button>
   <img id="modalImg" src="" alt="" />
+  <button id="nextBtn" class="nav-arrow">&#10095;</button>
 </div>
 
 <script>
-  function openModal(img) {
-    document.getElementById("imageModal").style.display = "flex";
-    document.getElementById("modalImg").src = img.src;
-    document.getElementById("modalImg").alt = img.alt;
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.getElementById("closeModal");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const paintings = Array.from(document.querySelectorAll(".painting-item"));
+  let currentIndex = 0;
+
+  function openModalByIndex(index) {
+    currentIndex = index;
+    const img = paintings[index].querySelector("img.painting-image");
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modal.style.display = "flex";
   }
 
   function closeModal() {
-    document.getElementById("imageModal").style.display = "none";
+    modal.style.display = "none";
   }
 
-  document.getElementById("closeModal").addEventListener("click", closeModal);
-  document.getElementById("imageModal").addEventListener("click", function (e) {
-    if (e.target === this) closeModal();
+  function showNext() {
+    currentIndex = (currentIndex + 1) % paintings.length;
+    openModalByIndex(currentIndex);
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + paintings.length) % paintings.length;
+    openModalByIndex(currentIndex);
+  }
+
+  paintings.forEach((painting, index) => {
+    painting.addEventListener("click", () => openModalByIndex(index));
   });
-  document.addEventListener("keydown", function (e) {
+
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "ArrowLeft") showPrev();
+  });
+
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showNext();
+  });
+
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showPrev();
   });
 </script>

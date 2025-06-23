@@ -94,7 +94,7 @@ title: Fox Paintings Gallery
     line-height: 1.4;
   }
 
-    /* Contact form */
+  /* Contact form */
   #contact {
     max-width: 480px; /* narrower */
     margin: 2rem auto 4rem;
@@ -207,6 +207,14 @@ title: Fox Paintings Gallery
 
     p.gallery-subtitle {
       font-size: 1rem;
+    }
+
+    /* Responsive fix for contact form on phones */
+    #contact {
+      max-width: 90vw;   /* 90% viewport width */
+      margin: 1.5rem auto 3rem;
+      padding: 1rem 1rem;
+      box-sizing: border-box;
     }
   }
 </style>

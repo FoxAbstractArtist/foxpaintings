@@ -66,7 +66,7 @@ title: Fox Paintings Gallery
   .painting-image {
     width: 100%;
     height: 220px;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain */
     background: #eee;
   }
 

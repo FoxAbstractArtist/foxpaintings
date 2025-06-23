@@ -94,13 +94,13 @@ title: Fox Paintings Gallery
     line-height: 1.4;
   }
 
-  /* Contact form */
+    /* Contact form */
   #contact {
-    max-width: 600px;
+    max-width: 480px; /* narrower */
     margin: 2rem auto 4rem;
     background: rgba(255,255,255,0.95);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.2rem 1.5rem; /* less padding top/bottom */
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     color: #222;
   }
@@ -108,35 +108,38 @@ title: Fox Paintings Gallery
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin-bottom: 1rem;
+    font-size: 1.8rem; /* slightly smaller */
   }
   #contact form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem; /* smaller gaps */
   }
   #contact label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
+    font-size: 0.95rem; /* smaller */
   }
   #contact input, 
   #contact textarea {
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem; /* smaller */
   }
   #contact button {
     background: #222;
     color: #fff;
-    padding: 0.75rem;
+    padding: 0.6rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     transition: background 0.3s ease;
+    font-size: 1rem;
   }
   #contact button:hover {
     background: #444;

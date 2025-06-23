@@ -94,6 +94,54 @@ title: Fox Paintings Gallery
     line-height: 1.4;
   }
 
+  /* Contact form */
+  #contact {
+    max-width: 600px;
+    margin: 2rem auto 4rem;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #222;
+  }
+  #contact h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  #contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #contact label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+  }
+  #contact input, 
+  #contact textarea {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+  }
+  #contact button {
+    background: #222;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.3s ease;
+  }
+  #contact button:hover {
+    background: #444;
+  }
+
   /* Modal */
   #imageModal {
     position: fixed;
@@ -191,6 +239,34 @@ title: Fox Paintings Gallery
 {% else %}
   <p style="text-align:center;">No paintings yet.</p>
 {% endif %}
+
+<!-- Contact Form -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <p style="display:none;">
+      <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
+
+    <label>
+      Name
+      <input type="text" name="name" required />
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" required />
+    </label>
+
+    <label>
+      Message
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
 <div id="imageModal">
   <span id="closeModal">&times;</span>

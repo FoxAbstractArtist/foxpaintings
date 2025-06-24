@@ -342,9 +342,34 @@ title: Fox Paintings Gallery
   });
 </script>
 
-<footer style="text-align:center; padding:1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
-  <p style="margin: 0 0 0.5rem 0;">© 2025 Fox Paintings</p>
-  <div style="font-size: 1.5rem;">
-    <a href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" style="color: #e6f0ff; margin: 0 0.8rem; text-decoration:none;" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#e6f0ff" viewBox="0 0 24 24" width="24" height="24" style="vertical-align: middle;">
-        <path d="M7 2C4.243 2 2 4.243 2 7
+<footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
+  <style>
+    .social-icon {
+      margin: 0 0.8rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+      border-radius: 6px;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+  </style>
+
+  <div style="margin-bottom: 1rem;">
+    <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo" />
+    </a>
+    <a class="social-icon" href="https://www.tiktok.com/@fox.paintings" target="_blank" rel="noopener" aria-label="TikTok">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="TikTok logo" />
+    </a>
+  </div>
+  <p style="margin: 0;">© 2025 Fox Paintings</p>
+</footer>
+

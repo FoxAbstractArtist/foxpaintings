@@ -354,22 +354,24 @@ title: Fox Paintings Gallery
       width: 24px;
       height: 24px;
       vertical-align: middle;
-      border-radius: 6px;
+      filter: brightness(90%);
     }
 
     .social-icon:hover {
       transform: scale(1.2);
+      filter: brightness(110%);
     }
   </style>
 
   <div style="margin-bottom: 1rem;">
     <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo" />
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram logo" />
     </a>
     <a class="social-icon" href="https://www.tiktok.com/@fox.paintings" target="_blank" rel="noopener" aria-label="TikTok">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="TikTok logo" />
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok logo" />
     </a>
   </div>
+
   <p style="margin: 0;">© 2025 Fox Paintings</p>
 </footer>
 

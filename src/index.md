@@ -345,14 +345,14 @@ title: Fox Paintings Gallery
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
   <style>
     .social-icon {
-      margin: 0 0.8rem;
+      margin: 0 0.6rem;
       display: inline-block;
       transition: transform 0.3s ease;
     }
 
     .social-icon img {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       vertical-align: middle;
       border-radius: 6px;
     }

@@ -345,18 +345,20 @@ title: Fox Paintings Gallery
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
   <style>
     .social-icon {
-      margin: 0 0.6rem;
+      margin: 0 0.8rem;
       display: inline-block;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
+
     .social-icon img {
-      width: 24px;
-      height: 24px;
+      width: 36px;
+      height: 36px;
       vertical-align: middle;
       filter: brightness(90%);
     }
+
     .social-icon:hover img {
-      transform: scale(1.2);
+      transform: scale(1.15);
       filter: brightness(110%);
     }
   </style>
@@ -372,5 +374,6 @@ title: Fox Paintings Gallery
 
   <p style="margin: 0;">© 2025 Fox Paintings</p>
 </footer>
+
 
 

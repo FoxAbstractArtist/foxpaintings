@@ -365,10 +365,10 @@ title: Fox Paintings Gallery
 
   <div style="margin-bottom: 1rem;">
     <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram logo" />
+      <img src="/assets/icons/instagram.svg" alt="Instagram logo" />
     </a>
     <a class="social-icon" href="https://www.tiktok.com/@fox.paintings" target="_blank" rel="noopener" aria-label="TikTok">
-      <img src="https://img.icons8.com/fluency/48/000000/tiktok--v1.png" alt="TikTok logo" />
+      <img src="/assets/icons/tiktok.png" alt="TikTok logo" />
     </a>
   </div>
 

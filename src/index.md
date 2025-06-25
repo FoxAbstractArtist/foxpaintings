@@ -42,6 +42,7 @@ title: Fox Paintings Gallery
   }
 
   .painting-item {
+    position: relative;
     background: rgba(255,255,255,0.95);
     border-radius: 12px;
     overflow: hidden;
@@ -68,6 +69,25 @@ title: Fox Paintings Gallery
     height: 220px;
     object-fit: contain;
     background: #eee;
+  }
+
+  .painting-hover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(34, 34, 34, 0.75);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .painting-item:hover .painting-hover-overlay {
+    opacity: 1;
   }
 
   .painting-footer {
@@ -232,17 +252,16 @@ title: Fox Paintings Gallery
   }
 
   .social-icon img {
-  width: 36px;
-  height: 36px;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: brightness(95%);
-}
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(95%);
+  }
 
-.social-icon:hover img {
-  transform: scale(1.15);
-  filter: brightness(110%);
-}
-
+  .social-icon:hover img {
+    transform: scale(1.15);
+    filter: brightness(110%);
+  }
 </style>
 
 <h1 class="gallery-title">Fox Paintings Gallery</h1>
@@ -252,7 +271,10 @@ title: Fox Paintings Gallery
   <div class="gallery-grid">
     {% for painting in collections.paintings %}
       <article class="painting-item">
-        <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
+        <div style="position: relative;">
+          <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
+          <div class="painting-hover-overlay">{{ painting.data.title }}</div>
+        </div>
         <div class="painting-footer">
           <h2 class="painting-title">{{ painting.data.title }}</h2>
           <div class="painting-description">{{ painting.templateContent | safe }}</div>
@@ -372,14 +394,13 @@ title: Fox Paintings Gallery
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
   <div style="margin-bottom: 1rem;">
     <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-      <img src="/assets/icons/instagram.png" alt="Instagram" style="width: 36px; height: 36px; vertical-align: middle;" />
+      <img src="/assets/icons/instagram.png" alt="Instagram" />
     </a>
     <a class="social-icon" href="https://www.tiktok.com/@foxpaintings" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
-      <img src="/assets/icons/tiktok.png" alt="TikTok" style="width: 36px; height: 36px; vertical-align: middle;" />
+      <img src="/assets/icons/tiktok.png" alt="TikTok" />
     </a>
   </div>
   <div style="font-size: 0.9rem; color: #ccc;">
     © 2025 Fox Paintings. All rights reserved.
   </div>
 </footer>
-

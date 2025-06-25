@@ -66,6 +66,8 @@ title: Fox Paintings Gallery
     font-weight: 600;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex: 1 1 140px;
+    min-width: 140px;
   }
 
   #filter-container select:hover,
@@ -86,6 +88,7 @@ title: Fox Paintings Gallery
     transition: background-color 0.3s ease, color 0.3s ease;
     align-self: center;
     font-family: 'Montserrat', sans-serif;
+    flex-shrink: 0;
   }
 
   #clear-filters:hover {
@@ -250,6 +253,7 @@ title: Fox Paintings Gallery
   #imageModal {
     position: fixed;
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -262,9 +266,19 @@ title: Fox Paintings Gallery
 
   #imageModal img {
     max-width: 90vw;
-    max-height: 80vh;
+    max-height: 70vh;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  }
+
+  #modalCaption {
+    margin-top: 0.8rem;
+    color: #ddd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    max-width: 90vw;
+    text-align: center;
+    user-select: none;
   }
 
   #closeModal {
@@ -321,6 +335,16 @@ title: Fox Paintings Gallery
       max-width: 100%;
       gap: 0.5rem;
       padding: 0.8rem 1rem;
+    }
+
+    #filter-container select {
+      min-width: 120px;
+      flex-basis: 100%;
+      flex-grow: 0;
+    }
+
+    #clear-filters {
+      flex-basis: 100%;
     }
   }
 
@@ -385,7 +409,11 @@ title: Fox Paintings Gallery
       <article 
         class="painting-item" 
         data-medium="{{ painting.data.medium | escape }}" 
-        data-year="{{ painting.data.year | escape }}">
+        data-year="{{ painting.data.year | escape }}"
+        data-title="{{ painting.data.title | escape }}"
+        data-size="{{ painting.data.size | escape }}"
+        data-medium-detail="{{ painting.data.medium | escape }}"
+        data-year-detail="{{ painting.data.year | escape }}">
         <div style="position: relative;">
           <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" loading="lazy" />
           <div class="painting-hover-overlay">{{ painting.data.title }}</div>
@@ -442,10 +470,11 @@ title: Fox Paintings Gallery
   </form>
 </section>
 
-<div id="imageModal">
+<div id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalCaption" tabindex="-1">
   <span id="closeModal" role="button" tabindex="0" aria-label="Close image modal">&times;</span>
   <button id="prevBtn" class="nav-arrow" aria-label="Previous image">&#10094;</button>
   <img id="modalImg" src="" alt="" />
+  <div id="modalCaption"></div>
   <button id="nextBtn" class="nav-arrow" aria-label="Next image">&#10095;</button>
 </div>
 
@@ -516,21 +545,37 @@ title: Fox Paintings Gallery
   // Initialize filter count on load
   filterPaintings();
 
-  // Modal and navigation script (unchanged)
+  // Modal and navigation script
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
   const closeBtn = document.getElementById("closeModal");
   const nextBtn = document.getElementById("nextBtn");
   const prevBtn = document.getElementById("prevBtn");
   const paintings = Array.from(document.querySelectorAll(".painting-item"));
   let currentIndex = 0;
 
+  function updateModalCaption(index) {
+    const painting = paintings[index];
+    const title = painting.dataset.title || "";
+    const medium = painting.dataset.mediumDetail || "";
+    const size = painting.dataset.size || "";
+    const year = painting.dataset.yearDetail || "";
+    let captionText = title;
+    if(medium) captionText += ` — Medium: ${medium}`;
+    if(size) captionText += ` — Size: ${size}`;
+    if(year) captionText += ` — Year: ${year}`;
+    modalCaption.textContent = captionText;
+  }
+
   function openModalByIndex(index) {
     currentIndex = index;
     const img = paintings[index].querySelector("img.painting-image");
     modalImg.src = img.src;
     modalImg.alt = img.alt;
+    updateModalCaption(index);
     modal.style.display = "flex";
+    modal.focus();
   }
 
   function closeModal() {

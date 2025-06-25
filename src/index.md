@@ -66,7 +66,7 @@ title: Fox Paintings Gallery
   .painting-image {
     width: 100%;
     height: 220px;
-    object-fit: contain; /* Changed from cover to contain */
+    object-fit: contain;
     background: #eee;
   }
 
@@ -98,30 +98,34 @@ title: Fox Paintings Gallery
   #contact {
     max-width: 480px;
     margin: 2rem auto 4rem;
-    background: #e6f0ff; /* soft pastel blue */
+    background: #e6f0ff;
     border-radius: 12px;
     padding: 1.2rem 1.5rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     color: #222;
   }
+
   #contact h2 {
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1.8rem;
   }
+
   #contact form {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
   }
+
   #contact label {
     display: flex;
     flex-direction: column;
     font-weight: 600;
     font-size: 0.95rem;
   }
-  #contact input, 
+
+  #contact input,
   #contact textarea {
     padding: 0.4rem 0.5rem;
     border-radius: 6px;
@@ -129,6 +133,7 @@ title: Fox Paintings Gallery
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
   }
+
   #contact button {
     background: #222;
     color: #fff;
@@ -141,6 +146,7 @@ title: Fox Paintings Gallery
     transition: background 0.3s ease;
     font-size: 1rem;
   }
+
   #contact button:hover {
     background: #444;
   }
@@ -189,6 +195,7 @@ title: Fox Paintings Gallery
     z-index: 10000;
     user-select: none;
   }
+
   #prevBtn { left: 1rem; }
   #nextBtn { right: 1rem; }
 
@@ -209,7 +216,6 @@ title: Fox Paintings Gallery
       font-size: 1rem;
     }
 
-    /* Fix contact box width on small screens */
     #contact {
       margin-left: 1rem;
       margin-right: 1rem;
@@ -345,16 +351,17 @@ title: Fox Paintings Gallery
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
   <style>
     .social-icon {
-      margin: 0 0.8rem;
+      margin: 0 0.5rem;
       display: inline-block;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
 
     .social-icon img {
-      width: 36px;
-      height: 36px;
+      width: 24px;
+      height: 24px;
       vertical-align: middle;
-      filter: brightness(90%);
+      object-fit: contain;
+      filter: brightness(95%);
     }
 
     .social-icon:hover img {
@@ -374,6 +381,3 @@ title: Fox Paintings Gallery
 
   <p style="margin: 0;">© 2025 Fox Paintings</p>
 </footer>
-
-
-

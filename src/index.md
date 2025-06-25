@@ -231,18 +231,18 @@ title: Fox Paintings Gallery
     cursor: pointer;
   }
 
-  .social-icon svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-    filter: brightness(95%);
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
+  .social-icon img {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(95%);
+}
 
-  .social-icon:hover svg {
-    transform: scale(1.15);
-    filter: brightness(110%);
-  }
+.social-icon:hover img {
+  transform: scale(1.15);
+  filter: brightness(110%);
+}
+
 </style>
 
 <h1 class="gallery-title">Fox Paintings Gallery</h1>

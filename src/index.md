@@ -222,6 +222,27 @@ title: Fox Paintings Gallery
       max-width: calc(100% - 2rem);
     }
   }
+
+  .social-icon {
+    margin: 0 0.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    filter: brightness(95%);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .social-icon:hover svg {
+    transform: scale(1.15);
+    filter: brightness(110%);
+  }
 </style>
 
 <h1 class="gallery-title">Fox Paintings Gallery</h1>
@@ -349,35 +370,39 @@ title: Fox Paintings Gallery
 </script>
 
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
-  <style>
-    .social-icon {
-      margin: 0 0.5rem;
-      display: inline-block;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .social-icon img {
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-      object-fit: contain;
-      filter: brightness(95%);
-    }
-
-    .social-icon:hover img {
-      transform: scale(1.15);
-      filter: brightness(110%);
-    }
-  </style>
-
   <div style="margin-bottom: 1rem;">
-    <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="/assets/icons/instagram.svg" alt="Instagram logo" />
+    <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+      <!-- Instagram SVG inline -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132.004 132" fill="currentColor" aria-hidden="true" role="img" >
+        <defs>
+          <linearGradient id="b">
+            <stop offset="0" stop-color="#3771c8"/>
+            <stop stop-color="#3771c8" offset=".128"/>
+            <stop offset="1" stop-color="#60f" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="a">
+            <stop offset="0" stop-color="#fd5"/>
+            <stop offset=".1" stop-color="#fd5"/>
+            <stop offset=".5" stop-color="#ff543e"/>
+            <stop offset="1" stop-color="#c837ab"/>
+          </linearGradient>
+          <radialGradient id="c" cx="158.429" cy="578.088" r="65" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -1.98198 1.8439 0 -1031.402 454.004)" fx="158.429" fy="578.088" />
+          <radialGradient id="d" cx="147.694" cy="473.455" r="65" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.17394 .86872 -3.5818 .71718 1648.348 -458.493)" fx="147.694" fy="473.455" />
+        </defs>
+        <path fill="url(#c)" d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z" transform="translate(1.004 1)"/>
+        <path fill="url(#d)" d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z" transform="translate(1.004 1)"/>
+        <path fill="#fff" d="M66.004 18c-13.036 0-14.672.057-19.792.29-5.11.234-8.598 1.043-11.65 2.23-3.157 1.226-5.835 2.866-8.503 5.535-2.67 2.668-4.31 5.346-5.54 8.502-1.19 3.053-2 6.542-2.23 11.65C18.06 51.327 18 52.964 18 66s.058 14.667.29 19.787c.235 5.104 1.043 8.592 2.23 11.645 1.226 3.157 2.866 5.835 5.535 8.503 2.668 2.668 5.346 4.31 8.503 5.535 3.053 1.19 6.54 2 11.64 2.23 5.12.233 6.757.29 19.793.29s14.667-.057 19.787-.29c5.104-.235 8.592-1.044 11.645-2.23 3.157-1.227 5.835-2.87 8.503-5.535 2.67-2.67 4.31-5.35 5.535-8.506 1.19-3.053 2-6.54 2.23-11.64.233-5.12.29-6.757.29-19.793s-.057-14.667-.29-19.787c-.235-5.104-1.044-8.592-2.23-11.645-1.227-3.157-2.87-5.835-5.535-8.503-2.67-2.67-5.35-4.31-8.506-5.535-3.053-1.19-6.54-2-11.64-2.23-5.12-.233-6.757-.29-19.793-.29zM66 29c10.59 0 18 7.41 18 18 0 10.59-7.41 18-18 18-10.59 0-18-7.41-18-18 0-10.59 7.41-18 18-18zm32.12-4.757a4.305 4.305 0 0 1-4.306-4.306 4.306 4.306 0 1 1 4.306 4.306zM66 41a25 25 0 1 0 0 50 25 25 0 0 0 0-50zm0 9a16 16 0 1 1 0 32 16 16 0 0 1 0-32z" />
+      </svg>
     </a>
-    <a class="social-icon" href="https://www.tiktok.com/@fox.paintings" target="_blank" rel="noopener" aria-label="TikTok">
-      <img src="/assets/icons/tiktok.svg" alt="TikTok logo" />
+
+    <a class="social-icon" href="https://www.tiktok.com/@foxpaintings" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+      <!-- TikTok SVG inline -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" role="img">
+        <path d="M160 60a60 60 0 0 1-60-60v96a36 36 0 1 0 60 32V60Zm52 32a84 84 0 0 1-52-17v80a64 64 0 1 1-52-20V160a84 84 0 1 0 104-68Z"/>
+      </svg>
     </a>
   </div>
-
-  <p style="margin: 0;">© 2025 Fox Paintings</p>
+  <div style="font-size: 0.9rem; color: #ccc;">
+    © 2025 Fox Paintings. All rights reserved.
+  </div>
 </footer>

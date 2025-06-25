@@ -32,6 +32,26 @@ title: Fox Paintings Gallery
     margin-bottom: 2rem;
   }
 
+  /* FILTER UI */
+  #filter-container {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #filter-container select {
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    background: #fff;
+    cursor: pointer;
+  }
+
   .gallery-grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -241,6 +261,11 @@ title: Fox Paintings Gallery
       margin-right: 1rem;
       max-width: calc(100% - 2rem);
     }
+
+    #filter-container {
+      max-width: 100%;
+      gap: 0.5rem;
+    }
   }
 
   .social-icon {
@@ -267,12 +292,39 @@ title: Fox Paintings Gallery
 <h1 class="gallery-title">Fox Paintings Gallery</h1>
 <p class="gallery-subtitle">Explore the collection below</p>
 
+<!-- FILTER UI -->
+<div id="filter-container">
+  <select id="filter-medium" aria-label="Filter by Medium">
+    <option value="">All Mediums</option>
+  </select>
+  <select id="filter-year" aria-label="Filter by Year">
+    <option value="">All Years</option>
+  </select>
+</div>
+
 {% if collections.paintings.size > 0 %}
-  <div class="gallery-grid">
+  <div class="gallery-grid" id="galleryGrid">
+    {% assign mediums = "" | split: "" %}
+    {% assign years = "" | split: "" %}
     {% for painting in collections.paintings %}
-      <article class="painting-item">
+      {% assign medium = painting.data.medium | default: "" %}
+      {% assign year = painting.data.year | default: "" %}
+
+      {% unless mediums contains medium or medium == "" %}
+        {% assign mediums = mediums | push: medium %}
+      {% endunless %}
+      {% unless years contains year or year == "" %}
+        {% assign years = years | push: year %}
+      {% endunless %}
+    {% endfor %}
+
+    {% for painting in collections.paintings %}
+      <article 
+        class="painting-item" 
+        data-medium="{{ painting.data.medium | escape }}" 
+        data-year="{{ painting.data.year | escape }}">
         <div style="position: relative;">
-          <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" />
+          <img src="{{ painting.data.image }}" alt="{{ painting.data.title }}" class="painting-image" loading="lazy" />
           <div class="painting-hover-overlay">{{ painting.data.title }}</div>
         </div>
         <div class="painting-footer">
@@ -335,6 +387,53 @@ title: Fox Paintings Gallery
 </div>
 
 <script>
+  // Fill filter dropdowns dynamically from collected mediums and years
+  const mediumsSet = new Set();
+  const yearsSet = new Set();
+
+  document.querySelectorAll(".painting-item").forEach(item => {
+    const medium = item.dataset.medium.trim();
+    if(medium) mediumsSet.add(medium);
+    const year = item.dataset.year.trim();
+    if(year) yearsSet.add(year);
+  });
+
+  const mediumSelect = document.getElementById("filter-medium");
+  const yearSelect = document.getElementById("filter-year");
+
+  function populateSelectOptions(select, options) {
+    options = Array.from(options).sort();
+    options.forEach(opt => {
+      const optionEl = document.createElement("option");
+      optionEl.value = opt;
+      optionEl.textContent = opt;
+      select.appendChild(optionEl);
+    });
+  }
+
+  populateSelectOptions(mediumSelect, mediumsSet);
+  populateSelectOptions(yearSelect, yearsSet);
+
+  // Filter function
+  function filterPaintings() {
+    const selectedMedium = mediumSelect.value.toLowerCase();
+    const selectedYear = yearSelect.value.toLowerCase();
+    document.querySelectorAll(".painting-item").forEach(item => {
+      const itemMedium = (item.dataset.medium || "").toLowerCase();
+      const itemYear = (item.dataset.year || "").toLowerCase();
+
+      let show = true;
+      if(selectedMedium && itemMedium !== selectedMedium) show = false;
+      if(selectedYear && itemYear !== selectedYear) show = false;
+
+      item.style.display = show ? "" : "none";
+    });
+  }
+
+  mediumSelect.addEventListener("change", filterPaintings);
+  yearSelect.addEventListener("change", filterPaintings);
+
+  // Modal and navigation script (unchanged)
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImg");
   const closeBtn = document.getElementById("closeModal");

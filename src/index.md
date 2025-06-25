@@ -375,7 +375,7 @@ title: Fox Paintings Gallery
       <img src="/assets/icons/instagram.svg" alt="Instagram logo" />
     </a>
     <a class="social-icon" href="https://www.tiktok.com/@fox.paintings" target="_blank" rel="noopener" aria-label="TikTok">
-      <img src="/assets/icons/tiktok.png" alt="TikTok logo" />
+      <img src="/assets/icons/tiktok.svg" alt="TikTok logo" />
     </a>
   </div>
 

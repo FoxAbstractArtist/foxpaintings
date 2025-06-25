@@ -352,12 +352,12 @@ title: Fox Paintings Gallery
 <div id="filter-container" role="region" aria-label="Painting filters">
   <label for="filter-medium">Medium:</label>
   <select id="filter-medium" aria-controls="galleryGrid" aria-label="Filter paintings by medium">
-    <option value="">All Mediums</option>
+    <option value="">All</option>
   </select>
 
   <label for="filter-year">Year:</label>
   <select id="filter-year" aria-controls="galleryGrid" aria-label="Filter paintings by year">
-    <option value="">All Years</option>
+    <option value="">All</option>
   </select>
 
   <button id="clear-filters" aria-label="Clear all filters" title="Clear all filters">Clear Filters</button>

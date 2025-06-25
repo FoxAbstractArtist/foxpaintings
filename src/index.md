@@ -35,21 +35,70 @@ title: Fox Paintings Gallery
   /* FILTER UI */
   #filter-container {
     max-width: 600px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1rem;
+    padding: 1rem 1.5rem;
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  #filter-container label {
+    font-weight: 600;
+    color: #eee;
+    font-family: 'Montserrat', sans-serif;
+    align-self: center;
   }
 
   #filter-container select {
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid #aaa;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     background: #fff;
     cursor: pointer;
+    font-weight: 600;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  #filter-container select:hover,
+  #filter-container select:focus {
+    border-color: #f25a5a;
+    outline: none;
+    box-shadow: 0 0 5px rgba(242,90,90,0.6);
+  }
+
+  #clear-filters {
+    background: transparent;
+    border: 1px solid #f25a5a;
+    border-radius: 20px;
+    color: #f25a5a;
+    font-weight: 600;
+    padding: 0.4rem 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #clear-filters:hover {
+    background-color: #f25a5a;
+    color: #fff;
+  }
+
+  #filter-count {
+    color: #ccc;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
   }
 
   .gallery-grid {
@@ -68,10 +117,16 @@ title: Fox Paintings Gallery
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: opacity 0.4s ease, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     cursor: pointer;
     animation: fadeIn 0.4s ease;
+  }
+
+  .painting-item[style*="display: none"] {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
   }
 
   @keyframes fadeIn {
@@ -265,6 +320,7 @@ title: Fox Paintings Gallery
     #filter-container {
       max-width: 100%;
       gap: 0.5rem;
+      padding: 0.8rem 1rem;
     }
   }
 
@@ -293,14 +349,21 @@ title: Fox Paintings Gallery
 <p class="gallery-subtitle">Explore the collection below</p>
 
 <!-- FILTER UI -->
-<div id="filter-container">
-  <select id="filter-medium" aria-label="Filter by Medium">
+<div id="filter-container" role="region" aria-label="Painting filters">
+  <label for="filter-medium">Medium:</label>
+  <select id="filter-medium" aria-controls="galleryGrid" aria-label="Filter paintings by medium">
     <option value="">All Mediums</option>
   </select>
-  <select id="filter-year" aria-label="Filter by Year">
+
+  <label for="filter-year">Year:</label>
+  <select id="filter-year" aria-controls="galleryGrid" aria-label="Filter paintings by year">
     <option value="">All Years</option>
   </select>
+
+  <button id="clear-filters" aria-label="Clear all filters" title="Clear all filters">Clear Filters</button>
 </div>
+
+<div id="filter-count" aria-live="polite" aria-atomic="true" aria-relevant="text">Showing all paintings</div>
 
 {% if collections.paintings.size > 0 %}
   <div class="gallery-grid" id="galleryGrid">
@@ -380,10 +443,10 @@ title: Fox Paintings Gallery
 </section>
 
 <div id="imageModal">
-  <span id="closeModal">&times;</span>
-  <button id="prevBtn" class="nav-arrow">&#10094;</button>
+  <span id="closeModal" role="button" tabindex="0" aria-label="Close image modal">&times;</span>
+  <button id="prevBtn" class="nav-arrow" aria-label="Previous image">&#10094;</button>
   <img id="modalImg" src="" alt="" />
-  <button id="nextBtn" class="nav-arrow">&#10095;</button>
+  <button id="nextBtn" class="nav-arrow" aria-label="Next image">&#10095;</button>
 </div>
 
 <script>
@@ -400,6 +463,8 @@ title: Fox Paintings Gallery
 
   const mediumSelect = document.getElementById("filter-medium");
   const yearSelect = document.getElementById("filter-year");
+  const clearBtn = document.getElementById("clear-filters");
+  const filterCount = document.getElementById("filter-count");
 
   function populateSelectOptions(select, options) {
     options = Array.from(options).sort();
@@ -414,10 +479,11 @@ title: Fox Paintings Gallery
   populateSelectOptions(mediumSelect, mediumsSet);
   populateSelectOptions(yearSelect, yearsSet);
 
-  // Filter function
+  // Filter function with count update
   function filterPaintings() {
     const selectedMedium = mediumSelect.value.toLowerCase();
     const selectedYear = yearSelect.value.toLowerCase();
+    let visibleCount = 0;
     document.querySelectorAll(".painting-item").forEach(item => {
       const itemMedium = (item.dataset.medium || "").toLowerCase();
       const itemYear = (item.dataset.year || "").toLowerCase();
@@ -427,11 +493,28 @@ title: Fox Paintings Gallery
       if(selectedYear && itemYear !== selectedYear) show = false;
 
       item.style.display = show ? "" : "none";
+      if(show) visibleCount++;
     });
+
+    const totalCount = document.querySelectorAll(".painting-item").length;
+    if(visibleCount === totalCount) {
+      filterCount.textContent = `Showing all paintings (${totalCount})`;
+    } else {
+      filterCount.textContent = `Showing ${visibleCount} of ${totalCount} paintings`;
+    }
   }
 
   mediumSelect.addEventListener("change", filterPaintings);
   yearSelect.addEventListener("change", filterPaintings);
+
+  clearBtn.addEventListener("click", () => {
+    mediumSelect.value = "";
+    yearSelect.value = "";
+    filterPaintings();
+  });
+
+  // Initialize filter count on load
+  filterPaintings();
 
   // Modal and navigation script (unchanged)
   const modal = document.getElementById("imageModal");

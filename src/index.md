@@ -372,10 +372,10 @@ title: Fox Paintings Gallery
 <footer style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.15); color: #eee; font-family: 'Montserrat', sans-serif;">
   <div style="margin-bottom: 1rem;">
     <a class="social-icon" href="https://www.instagram.com/fox.paintings" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-      <img src="/assets/icons/instagram.png" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;" />
+      <img src="/assets/icons/instagram.png" alt="Instagram" style="width: 36px; height: 36px; vertical-align: middle;" />
     </a>
     <a class="social-icon" href="https://www.tiktok.com/@foxpaintings" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
-      <img src="/assets/icons/tiktok.png" alt="TikTok" style="width: 24px; height: 24px; vertical-align: middle;" />
+      <img src="/assets/icons/tiktok.png" alt="TikTok" style="width: 36px; height: 36px; vertical-align: middle;" />
     </a>
   </div>
   <div style="font-size: 0.9rem; color: #ccc;">
